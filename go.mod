@@ -1,4 +1,4 @@
-module github.com/sun/installer
+module github.com/sun_proxy/installer
 
 go 1.14
 
