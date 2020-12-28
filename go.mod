@@ -1,4 +1,4 @@
-module sun_installer
+module github.com/sun/installer
 
 go 1.14
 
