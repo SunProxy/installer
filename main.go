@@ -80,7 +80,9 @@ func main() {
 		}
 		n, err := GetLatestBuildNum(circleci.Client{})
 		if err != nil {
-			log.Fatal("error fetching latest build!")
+			log.Println("error fetching latest build!")
+			_, _ = fmt.Scanln()
+			os.Exit(1)
 		}
 		num = n
 	}
@@ -92,13 +94,15 @@ func main() {
 		os.Exit(1)
 	}
 	link := GenerateDownloadLink(BuildOptions{BuildNum: num, Processor: int16(proc), Os: dos})
-	fmt.Println("Downloading Sun Proxy with the artifact link: ", link)
+	fmt.Println("Downloading Sun Proxy with the artifact link:", link)
 	err = DownloadBuild(link, dir)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Print("Downloaded Sun Proxy to ", dir, " if you encounter any bugs please report them on the repo or discord!")
-	_, _ = fmt.Scanln("Press Any key to close this CLI!")
+	fmt.Println("Downloaded Sun Proxy to ", dir, " if you encounter any bugs please report them on the repo or discord!")
+	fmt.Print("Press enter to continue.")
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
 }
 
 func RequestOption(msg string, defaults ...string) (string, error) {
