@@ -98,7 +98,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Print("Downloaded Sun Proxy to ", dir, " if you encounter any bugs please report them on the repo or discord!")
-	fmt.Scanln("Press Any key to close this CLI!")
+	_, _ = fmt.Scanln("Press Any key to close this CLI!")
 }
 
 func RequestOption(msg string, defaults ...string) (string, error) {
